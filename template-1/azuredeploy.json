@@ -1,0 +1,66 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "net-ip-range": {
+            "type": "string",
+            "metadata": {
+                "description": "IP Address range for new network"
+            }
+        },
+        "subnet-1": {
+            "type": "string",
+            "metadata": {
+                "description": "IP Address range for Subnet-1"
+            }
+        },
+        "subnet-2": {
+            "type": "string",
+            "metadata": {
+                "description": "IP Address range for Subnet-2"
+            }
+        },
+        "network-name": {
+            "type": "string",
+            "metadata": {
+                "description": "Name of network"
+            }
+        }
+
+    },
+    "functions": [],
+    "variables": {},
+    "resources": [
+        {
+            "name": "[parameters('network-name')]",
+            "type": "Microsoft.Network/virtualNetworks",
+            "apiVersion": "2019-11-01",
+            "location": "[resourceGroup().location]",
+            "tags": {
+                "displayName": "[parameters('network-name')]"
+            },
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "[parameters('net-ip-range')]"
+                    ]
+                },
+                "subnets": [
+                    {
+                        "name": "Subnet-1",
+                        "properties": {
+                            "addressPrefix": "[parameters('subnet-1')]"
+                        }
+                    },
+                    {
+                        "name": "Subnet-2",
+                        "properties": {
+                            "addressPrefix": "[parameters('subnet-2')]"
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "outputs": {}
+}

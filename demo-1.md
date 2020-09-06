@@ -25,7 +25,7 @@
     apt update -y
     apt install nginx -y
     cd /var/wwwroot/html
-    rm index*.html
+    rm index*````.html
     echo "<h1>Hello $HOSTNAME</h1>" > index.html
     ```
 
