@@ -20,6 +20,12 @@
                 "description": "IP Address range for Subnet-2"
             }
         },
+        "subnet-3": {
+            "type": "string",
+            "metadata": {
+                "description": "IP Address range for Subnet-3"
+            }
+        },
         "network-name": {
             "type": "string",
             "metadata": {
@@ -56,6 +62,12 @@
                         "name": "Subnet-2",
                         "properties": {
                             "addressPrefix": "[parameters('subnet-2')]"
+                        }
+                    },
+                       {
+                        "name": "Subnet-3",
+                        "properties": {
+                            "addressPrefix": "[parameters('subnet-3')]"
                         }
                     }
                 ]

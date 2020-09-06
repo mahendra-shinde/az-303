@@ -26,3 +26,18 @@
     ```
     $ Remove-AzResourceGroup -Name testgroup -confirm
     ```
+
+### Using AZURE CLI instead of POWERSHELL
+
+```
+# Login with AzureCLI
+$ az login
+### Make sure that YOU ARE IN RIGHT FOLDER
+$ az group create -n testgroup -l southeast
+## Validate the template
+$ az group deployment validate --template-file azuredeploy.json --template-parameter '@azuredeploy.parameters.json' -g testgroup
+## Deploy the template
+$ az group deployment create --template-file azuredeploy.json --template-parameter '@azuredeploy.parameters.json' -g testgroup
+## Deleting the resource group
+$ az group delete -n testgroup -y
+```
